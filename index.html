@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="./CSS/bootstrap.min.css">
     <!-- My Style CSS File -->
     <link rel="stylesheet" href="./CSS/style.css">
+    <!-- JS File -->
+    
 </head>
 <body>
     <nav>
@@ -25,13 +27,18 @@
                  id="searchBox">
             </div>
 
-            <div class="mode-icons">
-                
-            </div>
+        <div class="toggle-container">
+            <input type="checkbox" class="toggle-input" id="toggle-input">
+            <label class="toggle" for="toggle-input">
+                <div class="toggle-slider"></div>
+                <i class="fa-solid fa-sun"></i>
+                <i class="fa-solid fa-moon"></i>
+            </label>
+        </div>
           
         
         </div>
     </nav>
-    
+    <script src="./JS/index.js"></script>
 </body>
 </html>

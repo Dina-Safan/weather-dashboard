@@ -65,3 +65,55 @@
 }
 
 
+
+
+
+.toggle-input {
+    display: none;
+}
+
+.toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bs-primary-color);
+    width: 100px;
+    border-radius: 50px;
+    position: relative;
+    padding: 10px 5px;
+    cursor: pointer;
+}
+
+.toggle-slider {
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    position: absolute;
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 2;
+    transform: translateX(-10px)
+}
+
+.toggle i {
+    font-size: 30px;
+    z-index: 3;
+    position: relative;
+}
+
+.toggle .fa-sun {
+    color: orange;
+}
+
+.toggle .fa-moon {
+    color: #000000;
+}
+
+/* عندما يكون الوضع الداكن مفعلاً */
+[data-bs-theme="dark"] .toggle-slider {
+    transform: translateX(50px);
+}
+
+
+
