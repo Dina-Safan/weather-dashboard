@@ -1,21 +1,23 @@
-const toggleInput = document.getElementById('toggle-input');
-const htmlElement = document.documentElement;
+//^ Html Elements
+const toggleInput=document.querySelector("#toggle-input");
+const htmlElement=document.documentElement;
 
-// التحقق من التفضيل المحفوظ
-if (localStorage.getItem('theme') === 'dark') {
-    htmlElement.setAttribute('data-bs-theme', 'dark');
-    if (toggleInput) toggleInput.checked = true;
-}
+//& Varaiables
+const Savedtheme=localStorage.getItem("theme") || "light";
+htmlElement.setAttribute("data-bs-theme", Savedtheme);
+if( Savedtheme =="dark") toggleInput.checked=true;
 
-// إضافة حدث التغيير
-if (toggleInput) {
-    toggleInput.addEventListener('change', function() {
-        if (this.checked) {
-            htmlElement.setAttribute('data-bs-theme', 'dark');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            htmlElement.setAttribute('data-bs-theme', 'light');
-            localStorage.setItem('theme', 'light');
-        }
-    });
-}
+
+//~ Functions 
+
+
+//TODO Events 
+toggleInput.addEventListener("change",function(){
+  const theme =toggleInput.checked ?'dark':'light';
+  htmlElement.setAttribute("data-bs-theme", theme);
+  localStorage.setItem("theme",theme);
+
+})
+
+
+

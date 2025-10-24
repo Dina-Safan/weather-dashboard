@@ -1,4 +1,4 @@
-/*Glopal Styla*/
+/*global Style-----------------------------------*/
 :root,
  [data-bs-theme="light"]
 {
@@ -19,7 +19,15 @@
         
 }
 
-/*Nav Style*/
+/*Nav Style--------------------------------------------*/
+
+nav{
+    margin-top: 30px;
+}
+nav .fa-location-dot{
+    color: var(--bs-text-color);
+}
+/*Search-bar Style*/
 .search-bar{
     width: 350px;
     border: 1px solid var(--bs-border-color);
@@ -65,9 +73,7 @@
 }
 
 
-
-
-
+/*toggle Style*/
 .toggle-input {
     display: none;
 }
@@ -76,8 +82,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--bs-primary-color);
-    width: 100px;
+    background-color: var(--bs-border-color);
+    width: 110px;
     border-radius: 50px;
     position: relative;
     padding: 10px 5px;
@@ -86,18 +92,18 @@
 
 .toggle-slider {
     background-color: white;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     position: absolute;
     transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     z-index: 2;
-    transform: translateX(-10px)
+    transform: translateX(-8px)
 }
 
 .toggle i {
-    font-size: 30px;
+    font-size: 25px;
     z-index: 3;
     position: relative;
 }
@@ -110,10 +116,9 @@
     color: #000000;
 }
 
-/* عندما يكون الوضع الداكن مفعلاً */
-[data-bs-theme="dark"] .toggle-slider {
-    transform: translateX(50px);
-}
 
+[data-bs-theme="dark"] .toggle-slider {
+    transform: translateX(70px);
+}
 
 
