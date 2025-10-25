@@ -2,6 +2,10 @@
 const toggleInput=document.querySelector("#toggle-input");
 const htmlElement=document.documentElement;
 
+const cardElement=document.querySelectorAll(".card");
+console.log(cardElement);
+
+
 //& Varaiables
 const Savedtheme=localStorage.getItem("theme") || "light";
 htmlElement.setAttribute("data-bs-theme", Savedtheme);
@@ -18,6 +22,15 @@ toggleInput.addEventListener("change",function(){
   localStorage.setItem("theme",theme);
 
 })
+
+for(let i=0;i<cardElement.length;i++){
+   cardElement[i].addEventListener("click",function(e){
+     const activeCard=document.querySelector(".active");
+     activeCard.classList.remove('active');
+     const clickedCard=e.currentTarget;
+    clickedCard.classList.add("active");
+   })
+}
 
 
 
