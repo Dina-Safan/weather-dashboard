@@ -266,6 +266,7 @@ nav .fa-location-dot{
     display: flex;
     align-items: center;
     justify-content: space-between;
+     gap: 15px;
    
 }
 .clock{
@@ -313,30 +314,36 @@ nav .fa-location-dot{
 
 
 /* إضافة responsive design */
+/* 
 @media (max-width: 768px) {
     main {
-        flex-direction: column; /* تغيير الاتجاه */
+        flex-direction: column; 
     }
     
     .weather-card,
     .weather-rain {
-        width: 100%; /* عرض كامل */
+        width: 100%; 
     }
     
     .search-bar {
-        width: 200px; /* عرض أصغر */
+        width: 200px; 
     }
     
     .toggle {
-        width: 90px; /* عرض أصغر */
+        width: 90px; 
     }
     
     .toggle-slider {
-        width: 30px; /* حجم أصغر */
-        height: 30px; /* حجم أصغر */
+        width: 30px; 
+        height: 30px;
     }
     
     [data-bs-theme="dark"] .toggle-slider {
-        transform: translateX(55px); /* تعديل المسافة */
+        transform: translateX(55px); 
     }
 }
+
+@media (max-width: 992px) {
+  .weather-card { width: 100%; }
+  .weather-rain { width: 100%; margin-top: 2rem; }
+} */

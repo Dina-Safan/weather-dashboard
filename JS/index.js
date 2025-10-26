@@ -1,9 +1,7 @@
 //^ Html Elements
 const toggleInput=document.querySelector("#toggle-input");
 const htmlElement=document.documentElement;
-
 const cardElement=document.querySelectorAll(".card");
-console.log(cardElement);
 
 
 //& Varaiables
@@ -13,6 +11,7 @@ if( Savedtheme =="dark") toggleInput.checked=true;
 
 
 //~ Functions 
+
 
 
 //TODO Events 
