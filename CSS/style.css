@@ -9,6 +9,8 @@
     --bs-primary-color:#9d92e3;
     --bs-second-color:#9d92e3b2;
     --bs-third-color:#1d1d59;
+     --bs-transition-speed: 0.3s;
+     --bs-hover-color:rgba(0,0,0,0.1);
     
 }
 
@@ -20,6 +22,7 @@
     --bs-primary-color: #f6d58e;
      --bs-second-color:#e3bb62;
     --bs-second-color: #e3bb62;
+    --bs-hover-color:rgba(255,255,255,0.1);
         
 }
 
@@ -49,16 +52,16 @@ nav .fa-location-dot{
     width: 350px;
     border: 1px solid var(--bs-border-color);
     border-radius:50px ;
-    padding: 5px 15px;
+    padding: 8px 16px;
     display: flex;
     align-items: center;
     background-color: var(--bs-border-color);
-    transition: all .25s;
+    transition: all var(--bs-transition-speed);
 }
 
 .search-bar:focus-within{
     border-color: var(--bs-primary-color);
-     box-shadow: 0 0 2px var(--bs-primary-color);
+      box-shadow: 0 0 0 2px var(--bs-primary-color);
 
 }
 
@@ -68,7 +71,7 @@ nav .fa-location-dot{
 .search-bar input{
     width: 100%;
     border: none;
-    padding: 2px 10px;
+    padding: 4px 12px;
     background-color: rgba(128, 128, 128, 0);
 }
 
@@ -84,9 +87,8 @@ nav .fa-location-dot{
     margin-right: 5px;
     color: var(--bs-text-color);
     font-weight: bolder;
-    transition: color 0.2s;
     font-size: 16px;
-    transition: all .25s;
+    transition: all var(--bs-transition-speed);
 }
 
 
@@ -105,28 +107,29 @@ nav .fa-location-dot{
     position: relative;
     padding: 10px 5px;
     cursor: pointer;
+    border: 1px solid var(--bs-border-color); 
 }
 
 .toggle-slider {
     background-color: white;
-    width: 40px;
-    height: 40px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     position: absolute;
-    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: transform var(--bs-transition-speed) cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 2px 5px var(--bs-border-color);
     z-index: 2;
     transform: translateX(-8px)
 }
 
 .toggle i {
-    font-size: 25px;
+    font-size: 20px;
     z-index: 3;
     position: relative;
 }
 
 .toggle .fa-sun {
-    color: orange;
+     color: #ff9500;
 }
 
 .toggle .fa-moon {
@@ -151,8 +154,14 @@ nav .fa-location-dot{
     text-align: center;
     padding: 10px;
     width: 105px;
-     border-radius: 20px;
-     /* flex-grow: 0; */
+    border-radius: 20px;
+    transition: all var(--bs-transition-speed); 
+    cursor: pointer; 
+}
+
+.card:hover{
+        box-shadow: 0 4px 12px var(--bs-hover-color);
+          transform: translateY(-2px);
 }
 .card-title{
 
@@ -161,6 +170,7 @@ nav .fa-location-dot{
      margin-bottom:0px ;
      font-weight: 500;
      border-bottom: 1px solid var(--bs-text-color);
+      font-size: 0.9rem;
 
 }
 .card .card-title .time{
@@ -174,7 +184,7 @@ nav .fa-location-dot{
 }
 
 .card-body img{
-    width: 100px;
+    width: 80px;
     margin-inline: auto;
 }
 
@@ -189,9 +199,8 @@ nav .fa-location-dot{
 }
 .card.active{
    padding: 0;
-    overflow: hidden;
-    width: 270px;
-     /* flex-grow: 1; */
+   overflow: hidden;
+   width: 270px;
 }
 .card.active .card-title{
     padding: 10px;
@@ -201,11 +210,14 @@ nav .fa-location-dot{
     background-color: var(--bs-second-color);
      color: var(--bs-text-color-card);
      margin-bottom:0px ;
-     font-weight: 500;
+     font-weight: 600;
      border-bottom: none;
+     background: linear-gradient(135deg, var(--bs-second-color), var(--bs-primary-color)); 
 }
  .card.active .card-title .time{
     display: block;
+      font-size: 0.9rem; 
+    opacity: 0.9; 
  }
 .card.active .card-body{
     padding:0px 10px;
@@ -215,16 +227,17 @@ nav .fa-location-dot{
 }
  
 .card.active .card-body span{
-    font-weight: 500;
+    font-weight: 600;
 }
 .card.active .card-body .main-info{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 1rem;
 }
 .card.active .card-body .main-info .temp{
-    font-size: 65px;
     font-weight: 700;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
 }
 
 .card.active .card-body .main-info img{
@@ -235,10 +248,12 @@ nav .fa-location-dot{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-size: .9375rem; 
 }
 
 .card.active .card-body .todays-heighlight li {
   display: flex;
+    margin-bottom: .125rem; 
 }
 
 
@@ -261,8 +276,8 @@ nav .fa-location-dot{
 }
 .bar{
    
-    width: 10px;
-    height: 220px;
+    width: 12px;
+    height: 200px;
     background-color: var(--bs-border-color);
     border-radius:20px ;
     display: flex;
@@ -273,12 +288,14 @@ nav .fa-location-dot{
     height: 90%;
     width: 100%;
     background-color: var(--bs-primary-color);
-     border-radius:20px ;
+    border-radius:20px ;
 }
 
 .clock p{
     margin-top: 10px;
     margin-bottom: 0;
+    font-size: 0.85rem; 
+    font-weight: 500; 
 }
 
 
@@ -291,4 +308,35 @@ nav .fa-location-dot{
   transition: background-color 0.4s , 
               border-color 0.4s, 
            
+}
+
+
+
+/* إضافة responsive design */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column; /* تغيير الاتجاه */
+    }
+    
+    .weather-card,
+    .weather-rain {
+        width: 100%; /* عرض كامل */
+    }
+    
+    .search-bar {
+        width: 200px; /* عرض أصغر */
+    }
+    
+    .toggle {
+        width: 90px; /* عرض أصغر */
+    }
+    
+    .toggle-slider {
+        width: 30px; /* حجم أصغر */
+        height: 30px; /* حجم أصغر */
+    }
+    
+    [data-bs-theme="dark"] .toggle-slider {
+        transform: translateX(55px); /* تعديل المسافة */
+    }
 }
