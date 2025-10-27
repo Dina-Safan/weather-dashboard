@@ -1,7 +1,10 @@
 //^ Html Elements
 const toggleInput=document.querySelector("#toggle-input");
 const htmlElement=document.documentElement;
-const cardContainer=document.querySelector(".card-container")
+const cardContainer=document.querySelector(".card-container");
+const searchBox=document.querySelector(".search-bar input");
+
+
 
 
 //& Varaiables
@@ -9,14 +12,14 @@ const Savedtheme=localStorage.getItem("theme") || "light";
         htmlElement.setAttribute("data-bs-theme", Savedtheme);
         if( Savedtheme =="dark") toggleInput.checked=true;
 const apiKey="69b5dc7d551c4eba835123154252610";
-const baseURL="http://api.weatherapi.com/v1/forecast.json"
-
+const baseURL="http://api.weatherapi.com/v1/forecast.json";
+let currentLocation="london"
 
 
 
 //~ Functions 
-async function getWeather() {
-    const response= await fetch(`${baseURL}?key=${apiKey}&q=london&days=7`);
+async function getWeather(location) {
+    const response= await fetch(`${baseURL}?key=${apiKey}&q=${currentLocation}&days=7`);
     const data= await response.json();
     console.log(data);
     console.log(data.forecast.forecastday);
@@ -105,6 +108,13 @@ toggleInput.addEventListener("change",function(){
 
 })
 
+
+searchBox.addEventListener("blur",function(){
+currentLocation=searchBox.value
+    getWeather(currentLocation);
+    
+    
+})
 
 
 
