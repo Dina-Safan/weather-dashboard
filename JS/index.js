@@ -111,9 +111,15 @@ toggleInput.addEventListener("change",function(){
 
 searchBox.addEventListener("blur",function(){
 currentLocation=searchBox.value
-    getWeather(currentLocation);
-    
-    
+    getWeather(currentLocation); 
+})
+
+searchBox.addEventListener('keyup',function(e){
+   if(e.key=="Enter"){
+    currentLocation=searchBox.value
+    getWeather(currentLocation); 
+
+   }
 })
 
 
