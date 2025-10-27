@@ -1,7 +1,6 @@
 //^ Html Elements
 const toggleInput=document.querySelector("#toggle-input");
 const htmlElement=document.documentElement;
-const cardElement=document.querySelectorAll(".card");
 const cardContainer=document.querySelector(".card-container")
 
 
@@ -65,13 +64,17 @@ function displayCards(data){
                     </div>`
             cardContainer.innerHTML+=card;
     }
-   
-          
-        
-
-    
-
-
+    const allCards=document.querySelectorAll(".card");
+    for(let card of allCards){
+     card.addEventListener("click",function(e){
+     const activeCard=document.querySelector(".active");
+     console.log(activeCard);
+     
+     activeCard.classList.remove('active');
+     const clickedCard=e.currentTarget;
+    clickedCard.classList.add("active");
+   })
+}
 }
 
 
@@ -83,14 +86,6 @@ toggleInput.addEventListener("change",function(){
 
 })
 
-for(let i=0;i<cardElement.length;i++){
-   cardElement[i].addEventListener("click",function(e){
-     const activeCard=document.querySelector(".active");
-     activeCard.classList.remove('active');
-     const clickedCard=e.currentTarget;
-    clickedCard.classList.add("active");
-   })
-}
 
 
 
