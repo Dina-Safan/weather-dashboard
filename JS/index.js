@@ -13,22 +13,30 @@ const Savedtheme=localStorage.getItem("theme") || "light";
         if( Savedtheme =="dark") toggleInput.checked=true;
 const apiKey="69b5dc7d551c4eba835123154252610";
 const baseURL="http://api.weatherapi.com/v1/forecast.json";
-let currentLocation="london"
+let currentLocation="cairo"
 
 
 
 //~ Functions 
 async function getWeather(location) {
-    const response= await fetch(`${baseURL}?key=${apiKey}&q=${currentLocation}&days=7`);
+    const response= await fetch(`${baseURL}?key=${apiKey}&q=${location}&days=7`);
     const data= await response.json();
     console.log(data);
     console.log(data.forecast.forecastday);
 
     displayCards(data);
+    searchBox.value=""
     
 }
 
-getWeather();
+
+
+function success(position){
+    const currentLocation=`${position.coords.latitude},${position.coords.longitude}`
+    getWeather(currentLocation); 
+}
+
+navigator.geolocation.getCurrentPosition(success);
 
 function displayCards(data){
     const location=document.querySelector(".location").innerHTML=`${data.location.name} , ${data.location.country}`
@@ -110,14 +118,12 @@ toggleInput.addEventListener("change",function(){
 
 
 searchBox.addEventListener("blur",function(){
-currentLocation=searchBox.value
-    getWeather(currentLocation); 
+    getWeather(this.value); 
 })
 
 searchBox.addEventListener('keyup',function(e){
    if(e.key=="Enter"){
-    currentLocation=searchBox.value
-    getWeather(currentLocation); 
+    getWeather(searchBox.value); 
 
    }
 })
