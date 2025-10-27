@@ -36,7 +36,7 @@ function success(position){
     getWeather(currentLocation); 
 }
 
-navigator.geolocation.getCurrentPosition(success);
+
 
 function displayCards(data){
     const location=document.querySelector(".location").innerHTML=`${data.location.name} , ${data.location.country}`
@@ -109,6 +109,11 @@ function displayRain(weather){
 
 
 //TODO Events 
+
+window.addEventListener("load",function(){
+    navigator.geolocation.getCurrentPosition(success);
+})
+
 toggleInput.addEventListener("change",function(){
   const theme =toggleInput.checked ?'dark':'light';
   htmlElement.setAttribute("data-bs-theme", theme);
