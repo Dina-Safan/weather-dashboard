@@ -3,7 +3,6 @@ const toggleInput=document.querySelector("#toggle-input");
 const htmlElement=document.documentElement;
 const cardElement=document.querySelectorAll(".card");
 const cardContainer=document.querySelector(".card-container")
-console.log(cardContainer);
 
 
 //& Varaiables
@@ -20,7 +19,8 @@ const baseURL="http://api.weatherapi.com/v1/forecast.json"
 async function getWeather() {
     const response= await fetch(`${baseURL}?key=${apiKey}&q=london&days=7`);
     const data= await response.json();
-console.log(data.forecast.forecastday);
+    console.log(data);
+    console.log(data.forecast.forecastday);
 
     displayCards(data);
     
@@ -28,41 +28,48 @@ console.log(data.forecast.forecastday);
 
 getWeather();
 
-function displayCards(day){
+function displayCards(data){
+    const location=document.querySelector(".location").innerHTML=`${data.location.name} , ${data.location.country}`
+    const days=data.forecast.forecastday;
     let card='';
-    for(let i=0 ;i<day.forecast.forecastday.length;i++){
-            card=` <div class=" card ${i==0?"active":""}">
+    for(let [index,day]of days.entries()){
+        const date=new Date(day.date);
+          card=` <div class=" card ${index==0?"active":""}">
                         <div class="card-title">
-                            <div class="day">Friday</div>
-                            <div class="time">${day.forecast.forecastday[i].hour[i].time} pm</div>
+                            <div class="day">${date.toLocaleDateString("en-us",index==0?{ weekday: "long" }:{ weekday: "short" })}</div>
+                            <div class="time">${date.getHours()} : ${date.getMinutes()} ${date.getHours() >11 ?"PM" :"AM"}</div>
                         </div>
                         <div class="card-body">
                             <div class="main-info">
-                                <div class="temp">${day.current.temp_c}c°</div>
-                                <img src="https:${day.current.condition.icon}" alt="">
+                                <div class="temp">${day.hour[date.getHours()].temp_c}c°</div>
+                                <img src="./images/conditions/${day.day.condition.text.trim().toLowerCase().replace(/[^a-z0-9]+/g, "-")}.svg" alt="${day.day.condition.text}">
                             </div>
 
                             <div class="todays-heighlight">
                                 <ul >
-                                    <li>realfeal: <span>${day.current.feelslike_c}°</span></li>
-                                    <li>Wind: <span>${day.current.wind_kph}km/h</span></li>
-                                    <li>Pressure: <span>${day.current.pressure_mb}MB</span></li>
-                                    <li>Humidity: <span>${day.current.humidity}%</span></li>
+                                    <li>realfeal: <span>${day.hour[date.getHours()].feelslike_c}°</span></li>
+                                    <li>Wind: <span>${day.hour[date.getHours()].wind_kph}km/h</span></li>
+                                    <li>Pressure: <span>${day.hour[date.getHours()].pressure_mb}MB</span></li>
+                                    <li>Humidity: <span>${day.hour[date.getHours()].humidity}%</span></li>
                               
                                 </ul>
 
                                 <ul>
-                                       <li>Sunrise: <span>${day.forecast.forecastday[i].astro.sunrise} </span></li>
-                                       <li>Sunset: <span>${day.forecast.forecastday[i].astro.sunset} </span></li>
+                                       <li>Sunrise: <span>${day.astro.sunrise} </span></li>
+                                       <li>Sunset: <span>${day.astro.sunset} </span></li>
                                 </ul>
                             </div>
 
                         </div>
 
                     </div>`
-        cardContainer.innerHTML+=card;
-
+            cardContainer.innerHTML+=card;
     }
+   
+          
+        
+
+    
 
 
 }

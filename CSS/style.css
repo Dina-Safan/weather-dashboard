@@ -47,6 +47,10 @@ nav{
 nav .fa-location-dot{
     color: var(--bs-text-color);
 }
+
+nav .location{
+    font-weight: 500;
+}
 /*Search-bar Style*/
 .search-bar{
     width: 350px;
@@ -237,11 +241,11 @@ nav .fa-location-dot{
 }
 .card.active .card-body .main-info .temp{
     font-weight: 700;
-    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-size: clamp(2rem, 4.5vw, 3rem);
 }
 
 .card.active .card-body .main-info img{
-    width: 90px;  
+    width: 100px;  
 }
 
 .card.active .card-body  .todays-heighlight{
