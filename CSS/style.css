@@ -290,7 +290,6 @@ nav .location{
 
 }
 .clock .percentatge{
-    height: 90%;
     width: 100%;
     background-color: var(--bs-primary-color);
     border-radius:20px ;

@@ -33,7 +33,7 @@ function displayCards(data){
     let card='';
     for(let [index,day]of days.entries()){
         const date=new Date(day.date);
-          card=` <div class=" card ${index==0?"active":""}">
+          card+=` <div class=" card ${index==0?"active":""}" data-dayindex=${index}>
                         <div class="card-title">
                             <div class="day">${date.toLocaleDateString("en-us",index==0?{ weekday: "long" }:{ weekday: "short" })}</div>
                             <div class="time">${date.getHours()} : ${date.getMinutes()} ${date.getHours() >11 ?"PM" :"AM"}</div>
@@ -62,20 +62,39 @@ function displayCards(data){
                         </div>
 
                     </div>`
-            cardContainer.innerHTML+=card;
+          
     }
+      cardContainer.innerHTML=card;
+
     const allCards=document.querySelectorAll(".card");
     for(let card of allCards){
      card.addEventListener("click",function(e){
      const activeCard=document.querySelector(".active");
-     console.log(activeCard);
-     
-     activeCard.classList.remove('active');
-     const clickedCard=e.currentTarget;
-    clickedCard.classList.add("active");
+    //  activeCard.classList.remove('active');
+    //  const clickedCard=e.currentTarget;
+    // clickedCard.classList.add("active");
+      if (activeCard) {
+        activeCard.classList.remove("active");
+        const oldDate = new Date(days[activeCard.dataset.dayindex].date);
+        activeCard.querySelector(".day").textContent = oldDate.toLocaleDateString("en-us", { weekday: "short" });
+      }
+      const clickedCard = e.currentTarget;
+      clickedCard.classList.add("active");
+      const newDate = new Date(days[clickedCard.dataset.dayindex].date);
+      clickedCard.querySelector(".day").textContent = newDate.toLocaleDateString("en-us", { weekday: "long" });
+   displayRain(days[e.currentTarget.dataset.dayindex]);
+    
    })
 }
 }
+
+function displayRain(weather){
+      const clockElements=document.querySelectorAll(".clock");
+      for(let clockElement of clockElements){
+        clockElement.querySelector(".percentatge").style.height=`${weather.hour[clockElement.getAttribute("data-hour")].chance_of_rain}%`;
+    } 
+}
+
 
 
 //TODO Events 
