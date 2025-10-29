@@ -3,8 +3,7 @@ const toggleInput=document.querySelector("#toggle-input");
 const htmlElement=document.documentElement;
 const cardContainer=document.querySelector(".card-container");
 const searchBox=document.querySelector(".search-bar input");
-
-
+let cityItemElement=document.querySelector(".city-item");
 
 
 //& Varaiables
@@ -13,7 +12,7 @@ const Savedtheme=localStorage.getItem("theme") || "light";
         if( Savedtheme =="dark") toggleInput.checked=true;
 const apiKey="69b5dc7d551c4eba835123154252610";
 const baseURL="http://api.weatherapi.com/v1/forecast.json";
-let currentLocation="cairo"
+let currentLocation="cairo";
 
 
 
@@ -21,22 +20,15 @@ let currentLocation="cairo"
 async function getWeather(location) {
     const response= await fetch(`${baseURL}?key=${apiKey}&q=${location}&days=7`);
     const data= await response.json();
-    console.log(data);
-    console.log(data.forecast.forecastday);
-
     displayCards(data);
     searchBox.value=""
     
 }
 
-
-
 function success(position){
     const currentLocation=`${position.coords.latitude},${position.coords.longitude}`
     getWeather(currentLocation); 
 }
-
-
 
 function displayCards(data){
     const location=document.querySelector(".location").innerHTML=`${data.location.name} , ${data.location.country}`
@@ -97,6 +89,8 @@ function displayCards(data){
     
    })
 }
+
+displayRecentCities(data.location.name ,data.location.country)
 }
 
 function displayRain(weather){
@@ -106,7 +100,27 @@ function displayRain(weather){
     } 
 }
 
+async function getCityImage(city) {
+    const response= await fetch( `https://api.unsplash.com/search/photos?page=1&query=${city}&client_id=maVgNo3IKVd7Pw7-_q4fywxtQCACntlNXKBBsFdrBzI&per_page=5&orientation=landscape`);
+    const data= await response.json();
+    return data.results;
+      
+}
 
+async function displayRecentCities(city,country){
+    const imgArr= await getCityImage(city);
+    const random= Math.trunc(Math.random() * imgArr.length)
+    const imgUrl=imgArr[random].urls.regular;
+    let cityItem=`   <div class="item">
+                   <div class="image">
+                     <img src=${imgUrl} alt=${city}>
+                   </div>
+                <div class="info text-center pt-1">
+                    <p>${city}, ${country} </p>
+                </div>
+                </div>`
+            cityItemElement.innerHTML+=cityItem;
+}
 
 //TODO Events 
 
@@ -120,7 +134,6 @@ toggleInput.addEventListener("change",function(){
   localStorage.setItem("theme",theme);
 
 })
-
 
 searchBox.addEventListener("blur",function(){
     getWeather(this.value); 
