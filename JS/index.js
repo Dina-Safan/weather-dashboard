@@ -14,6 +14,10 @@ const apiKey="69b5dc7d551c4eba835123154252610";
 const baseURL="http://api.weatherapi.com/v1/forecast.json";
 let currentLocation="cairo";
 
+let recentCities=JSON.parse(localStorage.getItem("cities"))||[];
+console.log(recentCities);
+
+
 
 
 //~ Functions 
@@ -90,6 +94,13 @@ function displayCards(data){
    })
 }
 
+let exist =recentCities.find(currentCity=> currentCity.city ==data.location.name);
+console.log(exist);
+
+if(exist) return;
+
+recentCities.push({city:data.location.name ,country:data.location.country});
+localStorage.setItem("cities" ,JSON.stringify(recentCities));
 displayRecentCities(data.location.name ,data.location.country)
 }
 
@@ -116,7 +127,7 @@ async function displayRecentCities(city,country){
                      <img src=${imgUrl} alt=${city}>
                    </div>
                 <div class="info text-center pt-1">
-                    <p>${city}, ${country} </p>
+                    <p class="fw-medium">${city}, ${country} </p>
                 </div>
                 </div>`
             cityItemElement.innerHTML+=cityItem;
@@ -126,6 +137,10 @@ async function displayRecentCities(city,country){
 
 window.addEventListener("load",function(){
     navigator.geolocation.getCurrentPosition(success);
+
+    for(let i=0;i<recentCities.length;i++){
+        displayRecentCities(recentCities[i].city,recentCities[i].country);
+    }
 })
 
 toggleInput.addEventListener("change",function(){
