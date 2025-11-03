@@ -1,6 +1,5 @@
 # Weather App 🌤️
-
-![Weather App](./images/cloudy.png)  
+<img src="./images/cloudy.png" alt="Weather App" width="300"/>
 
 **Weather App** is a modern, interactive web application that brings real-time weather information to your fingertips. Search for any city in the world, view detailed hourly forecasts, and discover the chance of rain with intuitive visual charts.  
 
