@@ -54,11 +54,15 @@
 
 ## 🖼️ Application Preview
 
-<p float="left">
-  <img src="./images/screen1.png" width="200" alt="Light Theme"><br><sub>Light Theme</sub>
-  <img src="./images/screen2.png" width="200" alt="Dark Theme"><br><sub>Dark Theme</sub>
-  <img src="./images/screen3.png" width="200" alt="Mobile View"><br><sub>Mobile View</sub>
+<p align="center">
+  <img src="./images/screen1.png" width="200" alt="Light Theme">
+  <img src="./images/screen2.png" width="200" alt="Dark Theme">
+  <img src="./images/screen3.png" width="200" alt="Mobile View">
 </p>
+<p align="center">
+  <sub>Light Theme</sub> &nbsp;&nbsp;&nbsp; <sub>Dark Theme</sub> &nbsp;&nbsp;&nbsp; 
+</p>
+
 
 ---
 
@@ -69,13 +73,4 @@
 - Internet connection  
 - WeatherAPI key (for development)
 
-### Installation
-```bash
-# Clone the repository
-git clone https://github.com/Dina-Safan/weather-dashboard.git
 
-# Navigate to project directory
-cd weather-app
-
-# Open in browser
-open index.html
