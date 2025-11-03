@@ -1,5 +1,6 @@
 # Weather App 🌤️
-<img src="./images/cloudy.png" alt="Weather App" width="300"/>
+
+<img src="./images/cloudy.png" alt="Weather App" width="200"/>
 
 **Weather App** is a modern, interactive web application that brings real-time weather information to your fingertips. Search for any city in the world, view detailed hourly forecasts, and discover the chance of rain with intuitive visual charts.  
 
@@ -32,28 +33,41 @@ Whether you’re planning your day or just curious about the weather anywhere in
 - [Unsplash API](https://unsplash.com/developers)  
 
 ---
+
 ## Screenshots
 
-لقطات من واجهة تطبيق Weather App:
+<p float="left">
+  <img src="./images/screen1.png" width="200" />
+  <img src="./images/screen2.png" width="200" /> 
+  <img src="./images/screen3.png" width="200" />
+</p>
 
-![Screenshot 1](./images/screen1.png)  
-![Screenshot 2](./images/screen2.png)  
-![Screenshot 3](./images/screen3.png)
+---
 
+## Badges
 
+<p float="left">
+  <img src="https://img.shields.io/badge/HTML5-orange?logo=html5" />
+  <img src="https://img.shields.io/badge/CSS3-blue?logo=css3" />
+  <img src="https://img.shields.io/badge/JavaScript-yellow?logo=javascript" />
+  <img src="https://img.shields.io/badge/Bootstrap-purple?logo=bootstrap" />
+</p>
 
-## Badges (Optional)
+---
 
-![HTML5](https://img.shields.io/badge/HTML5-orange?logo=html5)  
-![CSS3](https://img.shields.io/badge/CSS3-blue?logo=css3)  
-![JavaScript](https://img.shields.io/badge/JS-yellow?logo=javascript)  
-![Bootstrap](https://img.shields.io/badge/Bootstrap-purple?logo=bootstrap)  
-# Author
+## Future Improvements
+
+- Add more detailed metrics (UV index, precipitation, visibility).  
+- Extend forecast for more than 7 days.  
+- Add animated weather icons for better UX.  
+- Offline support with cached recent searches.  
+- Option to save favorite cities permanently.  
+
+---
+
+## Author
 
 **Dina Safan**  
-Email: dinasafan83@gmail.com  
+Email: dinasafan83@gmail.com
 
-
-
-## Folder Structure
 
